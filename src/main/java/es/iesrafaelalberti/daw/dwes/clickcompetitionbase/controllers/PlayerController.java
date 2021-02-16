@@ -21,4 +21,9 @@ public class PlayerController {
         return new ResponseEntity<>(playerRepository.findById(id).orElseThrow(EntityNotFoundException::new),
                                     HttpStatus.OK);
     }
+
+    @GetMapping(value = "/player/morethan/{clicks}")
+    public ResponseEntity<Object> bestPlayers(@PathVariable("clicks") Integer clicks) {
+        return new ResponseEntity<>(playerRepository.findPlayerByClicks(clicks), HttpStatus.OK);
+    }
 }
